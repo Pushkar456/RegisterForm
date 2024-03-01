@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>RegisterForm</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="formContainer">
+            <h1>Summary</h1>
+            <div class="summary">
+                <p id="name"><span>Name:</span>Pushkar</p>
+                <p id="email"><span>Email:</span>p@gmail.com</p>
+                <p><span>Topics</span></p>
+                <ul id="list">
+                </ul>
+            </div>
+            <div class="confirmButton">
+                <button onclick="handleClick()">Confirm</button>
+            </div>
+        </div>
+        <div class="steps">
+            <p>Step 1 of 3</p>
+            <div class="step stepCompleted"></div>
+            <div class="step  stepCompleted"></div>
+            <div class="step stepActive"></div>
+        </div>
+    </div>
+
+
+    <script>
+        const name = window.localStorage.getItem("name");
+        const email = window.localStorage.getItem("email");
+        const topics = window.localStorage.getItem("topics").split(",");
+        let topicsLi = ''
+
+        topics.forEach(element => {
+            topicsLi = topicsLi + `<li>${element}</li>`
+        })
+
+
+        document.getElementById("name").innerHTML = `<span>Name:</span>${name}`;
+        document.getElementById("email").innerHTML = `<span>Email:</span>${email}`;
+        document.getElementById("list").innerHTML = topicsLi;
+
+        const handleClick = () =>{
+            alert("✅Success");
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RegisterForm</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="formContainer">
+            <h1>Which topics you are interested in?</h1>
+            <form id="topicsForm">
+                <input type="checkbox" class="checkbox first" name="Software Development" id="first">
+                <label for="first" id="l1" class="checkboxLable l1">Software Development</label>
+
+                <input type="checkbox" class="checkbox" name="User Experience" id="2nd">
+                <label for="2nd" class="checkboxLable">User Experience</label>
+
+                <input type="checkbox" class="checkbox" name="Graphic Design" id="3rd">
+                <label for="3rd" class="checkboxLable">Graphic Design</label>
+
+                <button type="submit" class="topicButton">continue</button>
+            </form>
+        </div>
+        <div class="steps">
+            <p>Step 1 of 3</p>
+            <div class="step stepCompleted"></div>
+            <div class="step stepActive"></div>
+            <div class="step"></div>
+        </div>
+    </div>
+    <script>
+        
+        const handleSubmit = (e) => {
+            e.preventDefault()
+            
+            let topic = []
+            for (let index = 0; index < 3; index++) {
+                if(e.target[index].checked){
+                    topic.push(e.target[index].name);
+                }
+                
+            }
+
+            if (topic.length > 0) {
+                window.localStorage.setItem("topics", topic)
+                window.location.href = "http://127.0.0.1:5500/registreForm/confirm.html"
+                
+            }
+            else{
+                alert("please select atlist one topic")
+            }
+        }
+        document.getElementById("topicsForm").addEventListener("submit", handleSubmit);
+
+    </script>
+</body>
+
+</html>
